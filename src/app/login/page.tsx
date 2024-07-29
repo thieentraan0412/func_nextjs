@@ -34,8 +34,6 @@ const Login = () => {
       seterror("Password must be at least 6 characters long");
       return;
     }
-    console.log(e.target[0].value);
-    console.log(e.target[1].value);
     const res = await signIn("credentials", {
       redirect: false,
       email,
@@ -48,6 +46,9 @@ const Login = () => {
       seterror("");
     }
   };
+  
+
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="container">
