@@ -1,6 +1,6 @@
-import { timeStamp } from "console";
-import mongoose, { Schema } from "mongoose";
-import { Mongoose } from "mongoose";
+import mongoose from "mongoose";
+
+const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
@@ -8,7 +8,7 @@ const userSchema = new Schema(
     password: { type: String, required: false },
     name: { type: String, required: false, default: "Anonymous" },
     role: { type: String, required: true, default: "user" },
-    isActive: { type: Boolean, default: true, default: true },
+    isActive: { type: Boolean, default: true },
     createdBy: { type: Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }

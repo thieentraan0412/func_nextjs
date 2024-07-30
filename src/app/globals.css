@@ -3,17 +3,21 @@
 @tailwind utilities;
 
 :root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
+
 }
 
 .container {
   margin: 0 auto;
-  max-width: 1012px;
+  max-width: 100%;
   padding: 0 20px;
-  @media (min-width: 1280px) {
-    max-width: 1180px;
+  @media (min-width: 1920px) {
+    max-width: 1576px;
     padding: 0 20px;
   }
 }

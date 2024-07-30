@@ -5,11 +5,13 @@ const connect = async () => {
 
   try {
     await mongoose.connect("mongodb+srv://thieentraan:vHVEbstWhsO0cvKY@cluster0.hpzkbhc.mongodb.net/AuthMongoNext?retryWrites=true&w=majority&appName=Cluster0", {
+      connectTimeoutMS: 30000,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
     console.log("Mongo Connection successfully established.");
   } catch (error) {
+
     throw new Error("Error connecting to Mongoose");
   }
 };
