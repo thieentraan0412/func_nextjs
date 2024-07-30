@@ -7,8 +7,6 @@ import User from "@/models/User";
 import connect from "@/untils/db";
 
 export const authOptions: any = {
-  // Configure one or more authentication providers
-
   providers: [
     CredentialsProvider({
       id: "credentials",
