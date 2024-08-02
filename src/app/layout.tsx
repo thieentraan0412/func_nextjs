@@ -22,12 +22,14 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SessionProvider session={session}>
-          <div className="container">
-            <div className="grid grid-cols-10">
-              <div className="col-span-2">
+          <div className="">
+            <div className="container bg-[#f2f2f2]/50">
+            <div className="grid md:grid-cols-12 grid-cols-1">
+              <div className="xl:col-span-3 lg:col-span-3 md:col-span-4">
                 <Navbar />
               </div>
-              <div className="col-span-8"> {children}</div>
+              <div className="xl:col-span-9 lg:col-span-9 md:col-span-8 "> {children}</div>
+            </div>
             </div>
           </div>
         </SessionProvider>

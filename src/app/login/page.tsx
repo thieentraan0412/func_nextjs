@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
+import Cookies from 'js-cookie';
 
 const Login = () => {
   const [error, seterror] = useState("");
@@ -10,7 +11,7 @@ const Login = () => {
   const { data: session, status: sessionStatus } = useSession();
   useEffect(() => {
     if (sessionStatus === "authenticated") {
-      router.replace("/dashboard");
+      router.replace("/");
     }
   }, [sessionStatus, router]);
 
@@ -39,12 +40,13 @@ const Login = () => {
       email,
       password,
     });
-    if (res?.error) {
+    if (!res?.error) {
+      Cookies.set('status', res.status, { expires: 7, path: '/' })
       seterror("invalid email or password");
-      if (res?.url) router.replace("/dashboard");
+      if (res?.url) router.replace("/");
     } else {
       seterror("");
-    }
+    } 
   };
   
 
@@ -82,7 +84,7 @@ const Login = () => {
           <p className=" text-red-500 mx-auto text-center">{error && error} </p>
           <p className="text-center pb-3">--OR--</p>
           <Link href={"/register"} className="text-center block font-semibold">
-            Register{" "}
+            Register
           </Link>
         </div>
       </div>

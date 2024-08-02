@@ -9,15 +9,17 @@
 }
 
 body {
-
+background-color: rgb(243, 243, 243);
 }
 
 .container {
   margin: 0 auto;
   max-width: 100%;
-  padding: 0 20px;
+  padding: 0;
   @media (min-width: 1920px) {
-    max-width: 1576px;
+    max-width: 1536px;
+  }
+  @media (max-width: 765) {
     padding: 0 20px;
   }
 }

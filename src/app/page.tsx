@@ -1,9 +1,12 @@
+import Upload from "@/components/Upload";
+import ViewDoc from "@/components/Viewfile";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>tran van thien</div>
+    <div>
+      {/* <Upload /> */}
+      <ViewDoc />
+    </div>
   );
 }
-
-

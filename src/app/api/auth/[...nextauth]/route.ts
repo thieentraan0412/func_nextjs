@@ -29,7 +29,7 @@ export const authOptions: any = {
             } else {
               return "wrong password";
             }
-          }else{
+          } else {
             return "user not found";
           }
         } catch (error: any) {
@@ -37,13 +37,23 @@ export const authOptions: any = {
         }
       },
     }),
-    // GithubProvider({
-    //   clientId: process.env.GITHUB_ID,
-    //   clientSecret: process.env.GITHUB_SECRET,
-    // }),
-    // ...add more providers here
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = user.role;
+        token.image = user.image;
+      }
+      return token;
+    },
+    async session(session:any, token:any) {
+      if (session.session.user) {
+        session.session.user.role = session.token.role;
+        session.session.user.image = session.token.image;
+      }
+      return session;
+    },
+  },
 };
-
 export const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
