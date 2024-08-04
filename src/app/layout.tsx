@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Narbar";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/untils/SessionProvider";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,16 +23,20 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SessionProvider session={session}>
-          <div className="">
-            <div className="container bg-[#f2f2f2]/50">
-            <div className="grid md:grid-cols-12 grid-cols-1">
-              <div className="xl:col-span-3 lg:col-span-3 md:col-span-4">
-                <Navbar />
+          <EdgeStoreProvider>
+            <div className="">
+              <div className="container bg-[#f2f2f2]/50">
+                <div className="grid md:grid-cols-12 grid-cols-1">
+                  <div className="xl:col-span-3 lg:col-span-3 md:col-span-4">
+                    <Navbar />
+                  </div>
+                  <div className="xl:col-span-9 lg:col-span-9 md:col-span-8 ">
+                    {children}
+                  </div>
+                </div>
               </div>
-              <div className="xl:col-span-9 lg:col-span-9 md:col-span-8 "> {children}</div>
             </div>
-            </div>
-          </div>
+          </EdgeStoreProvider>
         </SessionProvider>
       </body>
     </html>
